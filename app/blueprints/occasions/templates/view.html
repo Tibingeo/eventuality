@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block title %}
+Eventuality | Add a new Occasion
+{% endblock %}
+
+{% block main %}
+<h1>{{occasion.title}}</h1>
+    {% if session.user and occasion.author == session.user %}
+<p><a href="{{url_for('occasions.edit', key_name=occasion.key().id_or_name())}}">Edit</a></p>
+    {% endif %}
+<time datetime="{{occasion.date_start}}">{{occasion.date_start}} - {{occasion.date_end}}</time>
+<p>{{occasion.description}}</p>
+{% endblock %}

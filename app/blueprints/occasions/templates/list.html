@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block title %}
+Eventuality | Add a new Occasion
+{% endblock %}
+
+{% block main %}
+<h1>Occasions list</h1>
+    {% for o in occasions %}
+<dl><a href="{{url_for('occasions.view', key_name=o.key().id_or_name())}}">{{o.title}}</a></dl>
+<dt>{{o.date_start}} - {{o.date_end}}</dt>
+    {% endfor %}
+{% endblock %}

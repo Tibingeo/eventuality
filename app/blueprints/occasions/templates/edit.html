@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block title %}
+Eventuality | Add a new Occasion
+{% endblock %}
+
+{% block main %}
+<h1>Add a new occasion</h1>
+<form action="{{ url_for('occasions.edit', key_name=occasion.key().id_or_name()) }}" method="post" accept-charset="utf-8">
+    {{ form.csrf_token }}
+    <dl>
+    {{ render_field(form.title) }}
+    {{ render_field(form.description) }}
+    {{ render_field(form.date_start) }}
+    {{ render_field(form.date_end) }}
+    {{ render_field(form.delete) }}
+    </dl>
+    <p><input type="submit" value="Save occasion"/></p>
+</form>
+{% endblock %}
